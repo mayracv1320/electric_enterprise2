@@ -53,6 +53,7 @@ class Customers
 		return ['status'=> 303, 'message'=> 'aún no hay pedidos'];
 	}
 
+
 	public function sendEmail(){
 
 		$userInfo =  $this->getUserInfo();
@@ -60,7 +61,7 @@ class Customers
 
 		$from = $mail;
 		$to = "electricenterprise.market@gmail.com";
-		$subject = "REGISTRO CIIS XXI";
+		$subject = "REGISTRO DE PEDIDO";
 		$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
 		$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 		$cabeceras .= 'From: ' . $from;
