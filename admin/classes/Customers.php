@@ -7,7 +7,7 @@ class Customers
 {
 	
 	private $con;
-	private $id_orders;
+	private $id_user;
 
 	function __construct()
 	{
@@ -30,7 +30,7 @@ class Customers
 
 
 	public function getCustomersOrder(){
-		$query = $this->con->query("SELECT o.order_id, o.product_id, o.qty, o.trx_id, o.p_status, p.product_title, p.product_image FROM orders o JOIN products p ON o.product_id = p.product_id");
+		$query = $this->con->query("SELECT o.user_id , o.order_id, o.product_id, o.qty, o.trx_id, o.p_status, p.product_title, p.product_image FROM orders o JOIN products p ON o.product_id = p.product_id");
 		$ar = [];
 		if (@$query->num_rows > 0) {
 			while ($row = $query->fetch_assoc()) {
@@ -41,10 +41,25 @@ class Customers
 		return ['status'=> 303, 'message'=> 'aún no hay pedidos'];
 	}
 
+	public function getUserInfo(){
+		$query = $this->con->query("SELECT * FROM user_info where user_id = $this->id_user");
+		$ar = [];
+		if (@$query->num_rows > 0) {
+			while ($row = $query->fetch_assoc()) {
+				$ar[] = $row;
+			}
+			return ['status'=> 202, 'message'=> $ar[0]];
+		}
+		return ['status'=> 303, 'message'=> 'aún no hay pedidos'];
+	}
+
 	public function sendEmail(){
 
-		$from = "nain.acero24@gmail.com";
-		$to = "a_nacerom@unjbg.edu.pe";
+		$userInfo =  $this->getUserInfo();
+		$mail =  $userInfo["message"]["email"];
+
+		$from = $mail;
+		$to = "electricenterprise.market@gmail.com";
 		$subject = "REGISTRO CIIS XXI";
 		$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
 		$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -52,10 +67,13 @@ class Customers
 		$mensaje = 'hola';
 		mail($to,$subject,$mensaje, $cabeceras);
 
+
+
+		// return $mail;
 	}
 	
-	public function setIdOrders($id_orders){
-		$this->id_orders = $id_orders;
+	public function setIdUser($id_user){
+		$this->id_user = $id_user;
 	}
 
 }
@@ -83,11 +101,11 @@ if (isset($_POST["GET_CUSTOMER_ORDERS"])) {
 }
 
 if(isset($_POST["GET_CUSTOMER_ORDERS_EMAIL"])){
-	$id_orders = $_POST["GET_CUSTOMER_ORDERS_EMAIL"];
+	$id_user = $_POST["GET_CUSTOMER_ORDERS_EMAIL"];
 	$c = new Customers();
-	$c->setIdOrders($id_orders);
-	$c->sendEmail();
-	echo json_encode([]);
+	$c->setIdUser($id_user);
+	$data = $c->sendEmail();
+	echo json_encode($data);
 	exit();
 }
 

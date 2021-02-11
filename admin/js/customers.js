@@ -62,7 +62,7 @@ $(document).ready(function(){
 								              '<td>'+ value.qty +'</td>'+
 								              '<td>'+ value.trx_id +'</td>'+
 								              '<td>'+ value.p_status +'</td>'+
-								              '<td><button onclick="enviarcorreo('+ value.order_id +')" class="btn btn-warning text-white"><i class="far fa-envelope"></i></button></td>'+
+								              '<td><button onclick="enviarcorreo('+ value.user_id +')" class="btn btn-warning text-white"><i class="far fa-envelope"></i></button></td>'+
 								            '</tr>';
 						console.log(value);
 					});
