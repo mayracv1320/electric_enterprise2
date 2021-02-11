@@ -23,6 +23,7 @@
               <th>Cantidad</th>
               <th>ID de Transacción</th>
               <th>Estado de pago</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody id="customer_order_list">

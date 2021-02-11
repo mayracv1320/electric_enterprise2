@@ -62,8 +62,9 @@ $(document).ready(function(){
 								              '<td>'+ value.qty +'</td>'+
 								              '<td>'+ value.trx_id +'</td>'+
 								              '<td>'+ value.p_status +'</td>'+
+								              '<td><button onclick="enviarcorreo('+ value.order_id +')" class="btn btn-warning text-white"><i class="far fa-envelope"></i></button></td>'+
 								            '</tr>';
-
+						console.log(value);
 					});
 
 					$("#customer_order_list").html(customerOrderHTML);
@@ -79,3 +80,14 @@ $(document).ready(function(){
 
 
 });
+
+function enviarcorreo($data){
+	$.ajax({
+		url : '../admin/classes/Customers.php',
+		method : 'POST',
+		data : {GET_CUSTOMER_ORDERS_EMAIL:$data},
+		success : function(response){
+			console.log(response);
+		}
+	})
+}

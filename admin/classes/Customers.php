@@ -7,6 +7,7 @@ class Customers
 {
 	
 	private $con;
+	private $id_orders;
 
 	function __construct()
 	{
@@ -39,7 +40,23 @@ class Customers
 		}
 		return ['status'=> 303, 'message'=> 'aún no hay pedidos'];
 	}
+
+	public function sendEmail(){
+
+		$from = "nain.acero24@gmail.com";
+		$to = "a_nacerom@unjbg.edu.pe";
+		$subject = "REGISTRO CIIS XXI";
+		$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
+		$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		$cabeceras .= 'From: ' . $from;
+		$mensaje = 'hola';
+		mail($to,$subject,$mensaje, $cabeceras);
+
+	}
 	
+	public function setIdOrders($id_orders){
+		$this->id_orders = $id_orders;
+	}
 
 }
 
@@ -63,6 +80,15 @@ if (isset($_POST["GET_CUSTOMER_ORDERS"])) {
 		echo json_encode($c->getCustomersOrder());
 		exit();
 	}
+}
+
+if(isset($_POST["GET_CUSTOMER_ORDERS_EMAIL"])){
+	$id_orders = $_POST["GET_CUSTOMER_ORDERS_EMAIL"];
+	$c = new Customers();
+	$c->setIdOrders($id_orders);
+	$c->sendEmail();
+	echo json_encode([]);
+	exit();
 }
 
 
