@@ -58,7 +58,7 @@
         		<div class="col-12">
         			<div class="form-group">
 		        		<label>Nombre del producto</label>
-		        		<input type="text" name="product_name" class="form-control" placeholder="Ingrese el nombre del producto">
+		        		<input type="text" name="product_name" class="form-control" placeholder="Ingrese el nombre del productoMAYRAXQ">
 		        	</div>
         		</div>
         		<div class="col-12">
