@@ -58,6 +58,7 @@ class Customers
 
 		$userInfo =  $this->getUserInfo();
 		$mail =  $userInfo["message"]["email"];
+		$first_name =  $userInfo["message"]["first_name"];
 
 		$from = "electricenterprise.market@gmail.com";
 		$to = $mail;
@@ -65,7 +66,14 @@ class Customers
 		$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
 		$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 		$cabeceras .= 'From: ' . $from;
-		$mensaje = 'hola';
+		$mensaje = '<b>ELECTRIC ENTERPRISE<b><br><br>
+		Hola<br>
+		Te informamos que tu pedido ya ha sido registrado y en las próximas 48 horas se realizará el envío de tu/s producto/s. <br><br>
+		<b>Detalle de compra:<b><br>
+		<b>Nro. de Pedido:<b><br>
+		<b>Producto:<b><br>
+		<b>Transacción:<b><br>
+		<b>Estado:<b><br>';
 		mail($to,$subject,$mensaje, $cabeceras);
 
 
