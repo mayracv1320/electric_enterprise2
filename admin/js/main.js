@@ -32,7 +32,7 @@ $(document).ready(function(){
 				if (resp.status == 202) {
 					$("#admin-register-form").trigger("reset");
 					//$(".message").html('<span class="text-success">'+resp.message+'</span>');
-					window.location.href = window.origin+"/electric-enterprise/admin/index.php";
+					window.location.href = window.origin+"/electric_enterprise2/admin/index.php";
 				}else if(resp.status == 303){
 					$(".message").html('<span class="text-danger">'+resp.message+'</span>');
 				}
