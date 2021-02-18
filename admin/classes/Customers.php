@@ -57,8 +57,13 @@ class Customers
 	public function sendEmail(){
 
 		$userInfo =  $this->getUserInfo();
+		$customersOrder = $this->getCustomersOrder();
 		$mail =  $userInfo["message"]["email"];
 		$first_name =  $userInfo["message"]["first_name"];
+		$oorder_id =  $customersOrder["message"]["o.order_id"];
+		$pproduct_title =  $customersOrder["message"]["p.product_title"];
+		$otrx_id =  $customersOrder["message"]["o.trx_id"]; 
+		$op_status =  $customersOrder["message"]["o.p_status"];
 
 		$from = "electricenterprise.market@gmail.com";
 		$to = $mail;
@@ -66,17 +71,15 @@ class Customers
 		$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
 		$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 		$cabeceras .= 'From: ' . $from;
-		$mensaje = '<b>ELECTRIC ENTERPRISE<b><br><br>
-		Hola<br>
+		$mensaje = '<b>ELECTRIC ENTERPRISE</b><br><br>
+		<p>Hola $first_name,</p><br>
 		Te informamos que tu pedido ya ha sido registrado y en las próximas 48 horas se realizará el envío de tu/s producto/s. <br><br>
-		<b>Detalle de compra:<b><br>
-		<b>Nro. de Pedido:<b><br>
-		<b>Producto:<b><br>
-		<b>Transacción:<b><br>
-		<b>Estado:<b><br>';
+		<b>Detalle de compra:</b><br>
+		<b>Nro. de Pedido: </b> $oorder_id<br>
+		<b>Producto: </b>$pproduct_title<br>
+		<b>Transacción: </b>$otrx_id<br>
+		<b>Estado: </b>$op_status<br>';
 		mail($to,$subject,$mensaje, $cabeceras);
-
-
 
 		// return $mail;
 	}
