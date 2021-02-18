@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-02-2021 a las 11:08:15
+-- Tiempo de generación: 17-02-2021 a las 22:51:44
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.10
 
@@ -232,8 +232,8 @@ CREATE TABLE `user_info` (
 --
 
 INSERT INTO `user_info` (`user_id`, `first_name`, `last_name`, `email`, `password`, `mobile`, `address1`, `address2`) VALUES
-(1, 'Cinthia Victoria', 'Quenta Bendita', 'cinthia@gmail.com', '7b0385352a98fc33e995ae209e87e3dd', '952461873', 'Asoc Los Rosales Mz K9', 'Tacna'),
-(2, 'Alexandra', 'Camacho', 'alexandra@gmail.com', '62de630ea5dddf8d76afe176ff05f1aa', '952841634', 'Los proceres Mz K5', 'Tacna');
+(1, 'Cinthia Victoria', 'Quenta Bendita', 'mayracv1320@gmail.com', '7b0385352a98fc33e995ae209e87e3dd', '952461873', 'Asoc Los Rosales Mz K9', 'Tacna'),
+(2, 'Alexandra', 'Camacho', 'mayra1320.92@gmail.com', '62de630ea5dddf8d76afe176ff05f1aa', '952841634', 'Los proceres Mz K5', 'Tacna');
 
 --
 -- Índices para tablas volcadas
